@@ -15,6 +15,30 @@ function taskReducer(tasks, action) {
       ];
     case "delete":
       return tasks.filter((task) => task.id != action.payload.id);
+    case "edited":
+      return tasks.map((task) => {
+        if (task.id == action.payload.id) {
+          return {
+            text: action.payload.text,
+            id: task.id,
+            done: false,
+          };
+        } else {
+          return task;
+        }
+      });
+    case "updateStatus":
+      return tasks.map((task) => {
+        if (task.id == action.payload.id) {
+          return {
+            text: task.text,
+            id: task.id,
+            done: action.payload.status,
+          };
+        }else {
+          return task;
+        }
+      });
     default:
       throw new Error("Invalid action type");
   }
