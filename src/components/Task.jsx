@@ -43,9 +43,8 @@ const Task = (props) => {
   return (
     <div className="text-2xl p-2 w-full flex flex-row gap-3">
       <div
-        className={`${underEdit ? "hidden" : ""} ${
-          marked ? "line-through" : ""
-        }`}
+        className={`${underEdit ? "hidden" : ""} ${marked ? "line-through" : ""
+          }`}
       >
         {content}
       </div>
@@ -60,9 +59,8 @@ const Task = (props) => {
       />
 
       <button
-        className={`border border-black cursor-pointer ${
-          underEdit ? "hidden" : ""
-        }`}
+        className={`border border-black cursor-pointer ${underEdit ? "hidden" : ""
+          }`}
         type="button"
         onClick={() => {
           dispatch({ type: "delete", payload: { id: id } });
@@ -73,35 +71,31 @@ const Task = (props) => {
       <button
         type="button"
         onClick={handleEditClick}
-        className={`border border-black cursor-pointer ${
-          underEdit || marked ? "hidden" : ""
-        }`}
+        className={`border border-black cursor-pointer ${underEdit || marked ? "hidden" : ""
+          }`}
       >
         Edit
       </button>
       <button
         type="button"
         onClick={handleSumbitClick}
-        className={`border border-black cursor-pointer ${
-          underEdit ? "" : "hidden"
-        }`}
+        className={`border border-black cursor-pointer ${underEdit ? "" : "hidden"
+          }`}
       >
         Submit
       </button>
       <button
         type="button"
-        className={`border border-black cursor-pointer ${
-          marked || underEdit ? "hidden" : ""
-        }`}
+        className={`border border-black cursor-pointer ${marked || underEdit ? "hidden" : ""
+          }`}
         onClick={handleMark}
       >
         Mark
       </button>
       <button
         type="button"
-        className={`border border-black cursor-pointer ${
-          marked ? "" : "hidden"
-        }`}
+        className={`border border-black cursor-pointer ${marked ? "" : "hidden"
+          }`}
         onClick={handleUnMark}
       >
         Unmark
