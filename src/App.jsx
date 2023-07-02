@@ -35,7 +35,7 @@ function taskReducer(tasks, action) {
             id: task.id,
             done: action.payload.status,
           };
-        }else {
+        } else {
           return task;
         }
       });
@@ -48,6 +48,7 @@ const App = () => {
   return (
     <div className="w-full h-screen flex flex-col justify-center items-center">
       <TodoContext.Provider value={taskReducerHook}>
+        <h1 className="text-4xl text-gray-500">React Todo</h1>
         <Screen />
       </TodoContext.Provider>
     </div>

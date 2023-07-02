@@ -12,7 +12,7 @@ const Screen = () => {
     return tmp;
   }
   return (
-    <div className="w-1/2 py-1 bg-gray-200 h-1/2 flex flex-col-reverse justify-end overflow-auto gap-1">
+    <div className="w-1/2 py-1 border border-gray-400 h-1/2 flex flex-col-reverse justify-end overflow-auto gap-1">
       <div className="overflow-scroll">
         {taskList
           ? taskList.map((task) => <Task taskObj={task} key={task.id} />)
@@ -40,11 +40,11 @@ const Screen = () => {
           type="text"
           ref={todoInput}
           name="todoInput"
-          className="basis-5/6"
+          className="basis-5/6 border border-gray-300"
         />
         <button
           type="submit"
-          className="pb-2 pt-1 text-2xl border border-black cursor-pointer basis-1/6"
+          className="pb-2 pt-1 text-2xl border border-black cursor-pointer basis-1/6 hover:bg-gray-600 hover:text-white"
         >
           Add
         </button>
