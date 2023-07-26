@@ -2,7 +2,9 @@ import { useContext, useRef, useState } from "react";
 import TodoContext from "../todoContext";
 import CheckMark from "./CheckMark";
 const Task = (props) => {
+  // eslint-disable-next-line react/prop-types
   const { text, id, done } = props.taskObj;
+  // eslint-disable-next-line no-unused-vars
   const [_, dispatch] = useContext(TodoContext);
   const [underEdit, setUnderEdit] = useState(false);
   const [content, setContent] = useState(text);
