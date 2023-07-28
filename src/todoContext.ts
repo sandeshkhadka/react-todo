@@ -1,8 +1,40 @@
-import { useReducer } from "react";
-import Screen from "./components/Screen";
-import TodoContext from "./todoContext";
+import { Dispatch, createContext } from "react";
 
-function taskReducer(tasks, action) {
+export type Task = {
+  text: string;
+  id: string;
+  done: boolean;
+};
+type AddAction = {
+  type: "add";
+  payload: {
+    id: string;
+    text: string;
+  };
+};
+type DeleteAction = {
+  type: "delete";
+  payload: {
+    id: string;
+  };
+};
+type EditAction = {
+  type: "edit";
+  payload: {
+    text: string;
+    id: string;
+  };
+};
+
+type UpdateAction = {
+  type: "updateStatus";
+  payload: {
+    id: string;
+    status: boolean;
+  };
+};
+type Action = AddAction | EditAction | DeleteAction | UpdateAction;
+export function taskReducer(tasks: Task[], action: Action): Task[] {
   switch (action.type) {
     case "add":
       return [
@@ -15,7 +47,7 @@ function taskReducer(tasks, action) {
       ];
     case "delete":
       return tasks.filter((task) => task.id != action.payload.id);
-    case "edited":
+    case "edit":
       return tasks.map((task) => {
         if (task.id == action.payload.id) {
           return {
@@ -43,16 +75,7 @@ function taskReducer(tasks, action) {
       throw new Error("Invalid action type");
   }
 }
-const App = () => {
-  const taskReducerHook = useReducer(taskReducer, []);
-  return (
-    <div className="w-full h-screen flex flex-col justify-center items-center">
-      <TodoContext.Provider value={taskReducerHook}>
-        <h1 className="text-4xl text-gray-500">React Todo</h1>
-        <Screen />
-      </TodoContext.Provider>
-    </div>
-  );
-};
+type TodoContext = { taskList: Task[]; dispatch: Dispatch<Action> };
+const context = createContext<TodoContext | undefined>(undefined);
 
-export default App;
+export default context;
